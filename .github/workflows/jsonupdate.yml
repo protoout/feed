@@ -4,7 +4,10 @@ name: JSON UPDATE
 on:
   schedule:
     - cron: "55 3 * * *"
-# 1日1回(おそらく)
+    # 1日1回(おそらく)
+  push:
+    branches: [ main ]
+    # プッシュ時に動作する
 
 jobs:
   build:
@@ -12,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [15.x]
+        node-version: [16.x]
 
     steps:
       - uses: actions/checkout@v2

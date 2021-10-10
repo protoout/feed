@@ -16,4 +16,6 @@ module.exports = async () => {
     }
 
     fs.writeFileSync('./docs/qiita.json', JSON.stringify(output));
+
+    return output;
 };

@@ -64,8 +64,8 @@ module.exports = async (ORG_KEY) => {
         for(let i = 0, len = output.length; i < len; i++){
             const obj = output[i];
             if(obj.author){
-                obj.author_image_url = await getImg(obj.author);
-                obj.og_image = await getOgImg(obj.url);
+                // obj.author_image_url = await getImg(obj.author);
+                // obj.og_image = await getOgImg(obj.url);
             }
         }
 

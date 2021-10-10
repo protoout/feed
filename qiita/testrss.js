@@ -4,7 +4,10 @@
 const fs = require(`fs-extra`);
 const xml = require(`xml`);
 
+const convert = require('xml-js');
 const getOrg = require(`./getOrg`);
+
+
 
 (async function createRssFeed() {
 
@@ -12,19 +15,55 @@ const getOrg = require(`./getOrg`);
     const orgPosts = await getOrg(ORG_KEY);
     
   console.log("creating feed");
-  const feedObject = {
-    rss: [
-      {
-        _attr: {
-          version: "2.0",
-          "xmlns:atom": "http://www.w3.org/2005/Atom",
+
+  console.log(orgPosts);
+
+  const json = {
+    _declaration:{
+        _attributes: {
+            version: '1.0',
+            encording: 'utf-8'
         },
-      },
-      {
-        channel: orgPosts
-      },
-    ],
+    },
+    feed: {
+        _attributes: {
+            'xml:lang': 'ja-JP',
+            xmlns: 'http://www.w3.org/2005/Atom'
+        },
+
+        id: `tag:qiita.com,2005:/organizations/protoout-studio/activities`,
+
+        link: [
+            {
+                _attributes:{
+                    rel: 'alternate',
+                    text: 'text/html',
+                    href: 'https://qiita.com'
+                }
+            },
+            {
+                _attributes: {
+                    rel: 'self',
+                    type: 'application/atom+xml',
+                    href: 'https://qiita.com/organizations/protoout-studio/activities.atom'
+                }
+            },
+            `https://qiita.com/organizations/protoout-studio`,
+        ],
+
+        title: `プロトアウトスタジオ の記事`,
+        description: `Qiita で プロトアウトスタジオ に所属するユーザの最近の記事`,
+        updated: `2021-10-10T13:05:33+09:00`,
+        entry: orgPosts
+    },
+
   };
-const feed = '<?xml version="1.0" encoding="UTF-8"?>' + xml(feedObject);
-await fs.writeFile("./docs/qiita.rss", feed, "utf8");
+
+  const options = {compact: true, ignoreComment: true, spaces: 4};
+  const xmlstr = convert.json2xml(json, options);
+
+  console.log(xmlstr);
+    await fs.writeFile("./docs/qiita.rss", xmlstr, "utf8");
+// const feed = '<?xml version="1.0" encoding="UTF-8"?>' + xml(feedObject);
+// await fs.writeFile("./docs/qiita.rss", feed, "utf8");
 })();

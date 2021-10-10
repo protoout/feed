@@ -67,6 +67,15 @@ module.exports = async (ORG_KEY) => {
                 // obj.author_image_url = await getImg(obj.author);
                 // obj.og_image = await getOgImg(obj.url);
             }
+
+            //コンテンツをいれてみる
+            obj.content = {
+                _attributes: {
+                    type: 'html',
+                },
+                _text: `aaaa`
+            }
+            output[i] = obj;
         }
 
         return output;

@@ -31,6 +31,16 @@ async function createRssFeed() {
             _text: orgPosts[i].author
         }
 
+        obj.span = {
+            _text: orgPosts[i].published
+        }
+
+        obj.img ={
+            _attributes: {
+                src: orgPosts[i].link
+            },
+        }
+
         newObj[i] = obj;
     }
 

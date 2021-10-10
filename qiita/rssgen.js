@@ -17,42 +17,52 @@ async function createRssFeed() {
   // console.log(orgPosts);
 
   const json = {
-    _declaration:{
-        _attributes: {
-            version: '1.0',
-            encording: 'utf-8'
+    // _declaration:{
+    //     _attributes: {
+    //         version: '1.0',
+    //         encording: 'utf-8'
+    //     },
+    // },
+    html: {
+        // _attributes: {
+        //     'xml:lang': 'ja-JP',
+        //     xmlns: 'http://www.w3.org/2005/Atom'
+        // },
+
+        head:{
+            title: `プロトアウトスタジオ の記事`,
+            description: `Qiita で プロトアウトスタジオ に所属するユーザの最近の記事`,
         },
-    },
-    feed: {
-        _attributes: {
-            'xml:lang': 'ja-JP',
-            xmlns: 'http://www.w3.org/2005/Atom'
-        },
+        body: {
+            ul: {
+                li: orgPosts
+            }
+        }
 
-        id: `tag:qiita.com,2005:/organizations/protoout-studio/activities`,
+        // id: `tag:qiita.com,2005:/organizations/protoout-studio/activities`,
 
-        link: [
-            {
-                _attributes:{
-                    rel: 'alternate',
-                    text: 'text/html',
-                    href: 'https://protoout.github.io'
-                }
-            },
-            {
-                _attributes: {
-                    rel: 'self',
-                    type: 'application/atom+xml',
-                    href: 'https://protoout.github.io/info/qiita.atom'
-                }
-            },
-            `https://protoout.github.io/info`,
-        ],
+        // link: [
+        //     {
+        //         _attributes:{
+        //             rel: 'alternate',
+        //             text: 'text/html',
+        //             href: 'https://protoout.github.io'
+        //         }
+        //     },
+        //     {
+        //         _attributes: {
+        //             rel: 'self',
+        //             type: 'application/atom+xml',
+        //             href: 'https://protoout.github.io/info/qiita.atom'
+        //         }
+        //     },
+        //     `https://protoout.github.io/info`,
+        // ],
 
-        title: `プロトアウトスタジオ の記事`,
-        description: `Qiita で プロトアウトスタジオ に所属するユーザの最近の記事`,
-        updated: `2021-10-10T13:05:33+09:00`,
-        entry: orgPosts
+        // title: `プロトアウトスタジオ の記事`,
+        // description: `Qiita で プロトアウトスタジオ に所属するユーザの最近の記事`,
+        // // updated: `2021-10-10T13:05:33+09:00`,
+        // entry: orgPosts
     },
 
   };
@@ -62,7 +72,7 @@ async function createRssFeed() {
 
   console.log(xmlstr);
 
-  await fs.writeFile('./docs/qiita.rss', xmlstr, 'utf8');;
+  await fs.writeFile('./docs/qiita.html', xmlstr, 'utf8');;
 }
 
 module.exports = createRssFeed;

@@ -4,6 +4,7 @@
 // const MAGAZINE_KEY_ZENTAI = `m03f109eaf0a8`; //プロトアウト学生全体マガジン
 const jsongen = require(`./jsongen`);
 const rssgen = require(`./rssgen`);
+const atomgen = require(`./atomgen`);
 
 (async ()=>{
     console.log(`start json gen`);
@@ -11,4 +12,7 @@ const rssgen = require(`./rssgen`);
 
     console.log(`start rss gen`);
     await rssgen();
+
+    console.log(`start atom gen`);
+    await atomgen();
 })();

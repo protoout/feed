@@ -38,17 +38,17 @@ const getOrg = require(`./getOrg`);
                 _attributes:{
                     rel: 'alternate',
                     text: 'text/html',
-                    href: 'https://qiita.com'
+                    href: 'https://protoout.github.io'
                 }
             },
             {
                 _attributes: {
                     rel: 'self',
                     type: 'application/atom+xml',
-                    href: 'https://qiita.com/organizations/protoout-studio/activities.atom'
+                    href: 'https://protoout.github.io/info/qiita.atom'
                 }
             },
-            `https://qiita.com/organizations/protoout-studio`,
+            `https://protoout.github.io/info`,
         ],
 
         title: `プロトアウトスタジオ の記事`,

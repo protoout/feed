@@ -10,6 +10,6 @@ const htmlgen = require(`./htmlgen`);
     console.log(`start json gen`);
     const output = await jsongen();
 
-    console.log(`start html gen`);
+    console.log(`start html gen`, output);
     await htmlgen(output);
 })();

@@ -61,9 +61,8 @@ async function createRssFeed() {
   const xmlstr = convert.json2xml(json, options);
 
   console.log(xmlstr);
-    await fs.writeFile("./docs/qiita.atom", xmlstr, "utf8");
-// const feed = '<?xml version="1.0" encoding="UTF-8"?>' + xml(feedObject);
-// await fs.writeFile("./docs/qiita.rss", feed, "utf8");
+  await fs.writeFile('./docs/qiita.atom', xmlstr, 'utf8');
+  await fs.writeFile('./docs/qiita.rss', xmlstr, 'utf8');;
 }
 
 module.exports = createRssFeed;

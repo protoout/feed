@@ -7,10 +7,34 @@ const xml = require(`xml`);
 const convert = require('xml-js');
 const getOrg = require(`./getOrg`);
 
+
+
+
 async function createRssFeed() {
 
     const ORG_KEY = `protoout-studio`
     const orgPosts = await getOrg(ORG_KEY);
+
+    let newObj = [];
+
+    for (let i = 0, len= orgPosts.length; i < len; i++) {
+        const obj = {};
+        
+        obj.a = {
+            _attributes: {
+                href: orgPosts[i].link
+            },
+            _text: orgPosts[i].title
+        }
+
+        obj.p = {
+            _text: orgPosts[i].author
+        }
+
+        newObj[i] = obj;
+    }
+
+    // orgPosts
     
   console.log("creating feed");
 
@@ -35,7 +59,7 @@ async function createRssFeed() {
         },
         body: {
             ul: {
-                li: orgPosts
+                li: newObj
             }
         }
 

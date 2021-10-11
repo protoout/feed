@@ -7,10 +7,10 @@ const htmlgen = require(`./htmlgen`);
 // const atomgen = require(`./atomgen`);
 
 (async ()=>{
-    console.log(`start json gen`);
+    console.log(`--start json gen`);
     const output = await jsongen();
 
-    console.log(`start html gen`);
+    console.log(`--start html gen`);
     await htmlgen(output.zentai);
 
     // console.log(`start html gen`);

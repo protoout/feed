@@ -5,7 +5,7 @@ const fs = require(`fs-extra`);
 const xml = require(`xml`);
 
 const convert = require('xml-js');
-const getOrg = require(`./getOrg`);
+const getOrg = require(`../getOrg`);
 
 async function createRssFeed() {
 

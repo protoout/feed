@@ -1,7 +1,7 @@
 'use strict'
 
 // const fs = require(`fs`);
-const getOrg = require(`./getOrg`);
+const getOrg = require(`../getOrg`);
 
 const fs = require(`fs-extra`);
 const xml = require(`xml`);

@@ -36,15 +36,13 @@ async function createRssFeed(output) {
             },
             {
                 _text: orgPosts[i].id
+            },
+            {
+                _text: orgPosts[i].author_image_url
             }
         ]
 
         obj.img = [
-            {
-                _attributes: {
-                    src: orgPosts[i].author_image_url
-                },
-            },
             {
                 _attributes: {
                     src: orgPosts[i].og_image

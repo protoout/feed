@@ -12,4 +12,7 @@ const htmlgen = require(`./htmlgen`);
 
     console.log(`start html gen`, output);
     await htmlgen(output.zentai);
+
+    // console.log(`start html gen`);
+    // await htmlgen();
 })();

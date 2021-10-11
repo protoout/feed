@@ -7,7 +7,7 @@ const getOrg = require(`./getOrg`);
 async function createRssFeed(output) {
 
     let orgPosts = [];
-    if(output.length === 0){
+    if(!output){
         console.log(`新規でFetch`);
         const ORG_KEY = `protoout-studio`
         orgPosts = await getOrg(ORG_KEY);
@@ -27,13 +27,17 @@ async function createRssFeed(output) {
             _text: orgPosts[i].title
         }
 
-        obj.p = {
-            _text: orgPosts[i].author
-        }
-
-        obj.span = {
-            _text: orgPosts[i].published
-        }
+        obj.p = [
+            {
+                _text: orgPosts[i].author
+            },
+            {
+                _text: orgPosts[i].published
+            },
+            {
+                _text: orgPosts[i].id
+            }
+        ]
 
         obj.img = [
             {

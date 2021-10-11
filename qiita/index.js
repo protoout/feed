@@ -11,5 +11,5 @@ const htmlgen = require(`./htmlgen`);
     const output = await jsongen();
 
     console.log(`start html gen`, output);
-    await htmlgen(output);
+    await htmlgen(output.zentai);
 })();

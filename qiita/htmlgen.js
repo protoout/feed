@@ -7,9 +7,12 @@ const getOrg = require(`./getOrg`);
 async function createRssFeed(output) {
 
     let orgPosts = [];
-    if(!output){
+    if(output.length === 0){
+        console.log(`新規でFetch`);
         const ORG_KEY = `protoout-studio`
         orgPosts = await getOrg(ORG_KEY);
+    }else{
+        orgPosts = output;
     }
 
     let newObj = [];
@@ -32,11 +35,18 @@ async function createRssFeed(output) {
             _text: orgPosts[i].published
         }
 
-        obj.img ={
-            _attributes: {
-                src: orgPosts[i].link
+        obj.img = [
+            {
+                _attributes: {
+                    src: orgPosts[i].author_image_url
+                },
             },
-        }
+            {
+                _attributes: {
+                    src: orgPosts[i].og_image
+                },
+            }
+        ]
 
         newObj[i] = obj;
     }

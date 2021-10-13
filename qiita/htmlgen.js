@@ -29,6 +29,9 @@ async function createRssFeed(output) {
 
         obj.p = [
             {
+                _text: orgPosts[i].link
+            },
+            {
                 _text: orgPosts[i].author
             },
             {
